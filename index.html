@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daw's site </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(rgba(5, 5, 15, 0.85), rgba(5, 5, 15, 0.95)), 
+                        url('file:///C:/Users/voicu/Downloads/eueueeu.jpeg') no-repeat center center/cover;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* EFECT DE SCANNER PE TOT ECRANUL (SF/CYBERPUNK) */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 242, 254, 0.08) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 10;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        /* PARTICULE ULTRA STRĂLUCITOARE */
+        .particles {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            display: block;
+            background: #fff;
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) scale(0); opacity: 0; }
+            20% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; filter: blur(1px); }
+        }
+
+        /* CARDUL CENTRAL HYPER-GLOW */
+        .profile-container {
+            position: relative;
+            z-index: 2;
+            background: rgba(10, 10, 25, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid rgba(0, 242, 254, 0.2);
+            padding: 40px 30px;
+            border-radius: 24px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.2), 
+                        inset 0 0 20px rgba(255, 0, 127, 0.1);
+            animation: cardIntro 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes cardIntro {
+            from { opacity: 0; transform: scale(0.8) rotate(-2deg); filter: blur(15px); }
+            to { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
+        }
+
+        /* POZA DE PROFIL - DISCO GLOW */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00f2fe;
+            animation: hyperGlow 3s linear infinite;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.15) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes hyperGlow {
+            0%, 100% { border-color: #00f2fe; filter: drop-shadow(0 0 25px #00f2fe); }
+            33% { border-color: #ff007f; filter: drop-shadow(0 0 25px #ff007f); }
+            66% { border-color: #9b51e0; filter: drop-shadow(0 0 25px #9b51e0); }
+        }
+
+        /* NUME TEXT CU NEON PULSE */
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe, 0 0 40px #00f2fe;
+            animation: textNeonPulse 2s infinite alternate;
+        }
+
+        @keyframes textNeonPulse {
+            from { text-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe; }
+            to { text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f, 0 0 50px #ff007f; }
+        }
+
+        p.bio {
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px rgba(255,255,255,0.3);
+        }
+
+        /* BUTOANE ULTRA STRĂLUCITOARE CÂND PUI MOUSE-UL */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 15px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Efect de licărire mișto */
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-25deg);
+            transition: 0.4s;
+        }
+
+        .social-link:hover::before {
+            left: 150%;
+        }
+
+        /* Hover puternic cu vibrație și super-glow */
+        .social-link:hover {
+            transform: translateY(-4px) scale(1.03);
+            background: rgba(0, 242, 254, 0.1);
+            color: #fff;
+            border-color: #ff007f;
+            box-shadow: 0 0 25px #ff007f, inset 0 0 10px #ff007f;
+            animation: subtleShake 0.2s infinite alternate;
+        }
+
+        @keyframes subtleShake {
+            from { transform: translateY(-4px) scale(1.03) rotate(0.5deg); }
+            to { transform: translateY(-4px) scale(1.03) rotate(-0.5deg); }
+        }
+
+        /* PLAYER MUZICĂ OZN */
+        .music-player {
+            margin-top: 35px;
+            background: rgba(5, 5, 10, 0.8);
+            padding: 15px;
+            border-radius: 14px;
+            border: 1px solid #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+
+        .music-player p {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            color: #ff007f;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px #ff007f;
+        }
+
+        audio {
+            width: 100%;
+            height: 32px;
+            filter: invert(1) hue-rotate(280deg) drop-shadow(0 0 5px #ff007f);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PARTICULE STRĂLUCITOARE CU SUPER GLOW (Culoare neon adăugată direct) -->
+    <div class="particles">
+        <div class="particle" style="left: 15%; width: 6px; height: 6px; background: #00f2fe; box-shadow: 0 0 15px #00f2fe; animation-duration: 6s; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 30%; width: 8px; height: 8px; background: #ff007f; box-shadow: 0 0 15px #ff007f; animation-duration: 9s; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 45%; width: 5px; height: 5px; background: #9b51e0; box-shadow: 0 0 15px #9b51e0; animation-duration: 5s; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 60%; width: 9px; height: 9px; background: #00f2fe; box-shadow: 0 0 15px #00f2fe; animation-duration: 11s; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 75%; width: 7px; height: 7px; background: #ff007f; box-shadow: 0 0 15px #ff007f; animation-duration: 8s; animation-delay: 0.5s;"></div>
+        <div class="particle" style="left: 90%; width: 6px; height: 6px; background: #9b51e0; box-shadow: 0 0 15px #9b51e0; animation-duration: 7s; animation-delay: 4s;"></div>
+    </div>
+
+    <div class="profile-container">
+        <!-- Poza de Profil -->
+        <img src="file:///C:/Users/voicu/Downloads/....jpeg" alt="Avatar" class="avatar">
+        
+        <!-- Numele tău care pulsează -->
+        <h1>daw</h1>
+        <p class="bio">Salut sefule,da si tu un fallow si intra pe discord la o caterinca ⚡</p>
+
+        <!-- SECȚIUNEA REȚELE SOCIALE (Pune link-urile tale în loc de #) -->
+        <div class="links-container">
+            <a href="https://www.instagram.com/callmedavidutz?igsh=MWg5ZTcweHJsbm4zbw%3D%3D&utm_source=qrs" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i> INSTAGRAM
+            </a>
+            <a href="https://www.tiktok.com/@davidutzu11" target="_blank" class="social-link">
+                <i class="fab fa-tiktok"></i> TIKTOK
+            </a>
+            <a href="https://discord.gg/WdbvsQTCp" target="_blank" class="social-link">
+                <i class="fab fa-discord"></i> DISCORD
+            </a>
+            <a href="https://www.youtube.com/@davidutz-k9k" target="_blank" class="social-link">
+                <i class="fab fa-youtube"></i> YOUTUBE
+            </a>
+        </div>
+
+        <!-- PLAYER MUZICĂ -->
+        <div class="music-player">
+            <p><i class="fas fa-bolt animate-pulse"></i> NOW STREAMING</p>
+            <audio controls>
+                <source src="file:///C:/Users/voicu/Downloads/IDK,%20Super%20Ed%20-%20luh%20boy%20-%20idk%20(128k).mp3" type="audio/mpeg">
+                Browserul tău nu suportă audio direct.
+            </audio>
+        </div>
+    </div>
+
+</body>
+</html>
